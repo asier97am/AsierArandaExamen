@@ -93,12 +93,6 @@ public class MainActivity extends AppCompatActivity {
          numeroDivisa =  Double.parseDouble(String.valueOf(etDinero.getText()));
 
 
-//        if(numeroDivisa>0){
-//            numeroDivisa= numeroDivisa*usd;
-//            tvConversionDivisas.setText(""+numeroDivisa);
-//        }
-
-
         double operacionComision;
 
         if(numeroDivisa>0){
