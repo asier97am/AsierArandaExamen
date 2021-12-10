@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -74,4 +75,20 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.addItemDecoration(dividerItemDecoration);
 
     }
+    public void btConvertir(View view) {
+        //int posicion = adapter.getPos();
+
+        //aunque ese numero ya es numberDecimal lo transformo a Double por si acaso y lo almaceno en una variable
+        Double numeroDivisa =  Double.parseDouble(String.valueOf(etDinero.getText()));
+
+
+        if(numeroDivisa>0){
+            numeroDivisa= numeroDivisa*usd;
+            tvConversionDivisas.setText(""+numeroDivisa);
+        }
+
+    }
+
+
+
 }

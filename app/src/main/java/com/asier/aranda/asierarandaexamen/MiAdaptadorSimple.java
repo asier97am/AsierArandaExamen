@@ -17,10 +17,13 @@ public class MiAdaptadorSimple extends RecyclerView.Adapter<MiAdaptadorSimple.Vi
     private List<String> mData;
     private LayoutInflater mInflater; //
 
+
+
+
     private int pos=0;
     public int getPos(){ return this.pos;}
-    public void decrementarPos(){this.pos--;}
 
+    public String divisa = "";
 
     //constructor. pasamos los datos
     MiAdaptadorSimple(Context context, List<String> data){
@@ -46,20 +49,36 @@ public class MiAdaptadorSimple extends RecyclerView.Adapter<MiAdaptadorSimple.Vi
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                TextView myTV = view.findViewById(R.id.tvNombreDivisas);
-                ColorDrawable viewColor = (ColorDrawable) myTV.getBackground();
 
-                if (viewColor == null) myTV.setBackgroundColor(Color.RED);
+                TextView tvRecycled = view.findViewById(R.id.tvNombreDivisas);
+                ColorDrawable viewColor = (ColorDrawable) tvRecycled.getBackground();
+                if (viewColor == null)  {
+                    tvRecycled.setBackgroundColor(Color.BLUE);
+                }
                 else {
                     int colorId = viewColor.getColor();
-                    if (colorId == Color.WHITE) myTV.setBackgroundColor(Color.BLUE);
-                    else myTV.setBackgroundColor(Color.WHITE);
+                    if (colorId == Color.WHITE) tvRecycled.setBackgroundColor(Color.BLUE);
+                    else tvRecycled.setBackgroundColor(Color.WHITE);
                 }
                 pos=position;
+
+
+//                TextView tvVerDivisaSelec = view.findViewById(R.id.tvVerDivisaSelec);
+//                divisa=String.valueOf(tvRecycled.getText());
+//
+//                if (divisa.equalsIgnoreCase("USD")){
+//
+//                    tvVerDivisaSelec.setText(""+divisa);
+//
+//                }
+
+
+
             }
         });
 
     }
+
 
     //total numero de filas
     @Override
