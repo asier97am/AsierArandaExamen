@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     double zar = 18.030472;
     double rub = 83.219626;
 
-    double comision=1;
+    double comision = 1;
     double numeroDivisa;
 
     @Override
@@ -56,8 +56,6 @@ public class MainActivity extends AppCompatActivity {
         btConvertir = findViewById(R.id.btConvertir);
 
         swVip = findViewById(R.id.swVip);
-
-
 
 
         ArrayList<String> divisasRecy = new ArrayList<>();
@@ -86,34 +84,35 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.addItemDecoration(dividerItemDecoration);
 
     }
+
     public void btConvertir(View view) {
         //int posicion = adapter.getPos();
 
         //aunque ese numero ya es numberDecimal lo transformo a Double por si acaso y lo almaceno en una variable
-         numeroDivisa =  Double.parseDouble(String.valueOf(etDinero.getText()));
-
-
+        numeroDivisa = Double.parseDouble(String.valueOf(etDinero.getText()));
         double operacionComision;
 
-        if(numeroDivisa>0){
+            if (numeroDivisa > 0) {
+                if (!swVip.isChecked()) {
+                    numeroDivisa = numeroDivisa * usd;
+                    operacionComision = (numeroDivisa * comision) / 100;
+                    tvConversionDivisas.setText("" + (numeroDivisa - operacionComision));
+                } else {
+                    numeroDivisa = numeroDivisa * usd;
+                    tvConversionDivisas.setText("" + numeroDivisa);
+                    Toast.makeText(this, "ERES VIP", Toast.LENGTH_SHORT).show();
+                }
+            } else{
+                //si escribes un 0 en el Edit Text te sacará el mensaje de error
+                Toast.makeText(this, "Debe ESCRIBIR UNA CANTIDAD", Toast.LENGTH_SHORT).show();
+            }
 
-            if(!swVip.isChecked()) {
-                numeroDivisa= numeroDivisa*usd;
-                operacionComision=(numeroDivisa*comision)/100;
-                tvConversionDivisas.setText(""+(numeroDivisa-operacionComision));
-            }
-            else {
-                numeroDivisa= numeroDivisa*usd;
-                tvConversionDivisas.setText(""+numeroDivisa);
-                Toast.makeText(this, "ERES VIP", Toast.LENGTH_SHORT).show();
-            }
-        }
+
+
+
 
 
     }
-
-
-
 
 
 }
